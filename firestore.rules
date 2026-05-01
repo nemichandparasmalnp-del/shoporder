@@ -1,0 +1,13 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow read/write to catalog and orders from any device
+    // For production, add authentication to restrict access
+    match /catalog/{item} {
+      allow read, write: if true;
+    }
+    match /orders/{order} {
+      allow read, write: if true;
+    }
+  }
+}
